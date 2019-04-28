@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?scenebuilder-stylesheet fruitcombo.css?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trab_cg.Controle">
+    <bottom>
+        <GridPane hgap="10" style="-fx-background-color: #00CED1;">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="5" GridPane.rowIndex="1">
+                    <children>
+                        <Button fx:id="delB" onAction="#del" prefHeight="25.0" prefWidth="125.0" text="Deletar" />
+                        <Button fx:id="transladeB" onAction="#translade" prefHeight="25.0" prefWidth="125.0" text="Translação" />
+                        <Button fx:id="shearB" onAction="#shear" prefHeight="25.0" prefWidth="125.0" text="Cisalhamento" />
+                        <Label prefHeight="25.0" prefWidth="71.0" text="Fullscreen:" />
+                        <ComboBox fx:id="fullscrean" onAction="#fullScrean" prefHeight="25.0" prefWidth="50.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Todos" />
+                                <String fx:value="Frontal" />
+                                <String fx:value="Lateral" />
+                                <String fx:value="Aéreo" />
+                                <String fx:value="Perspectiva" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label prefHeight="25.0" prefWidth="70.0" text="Fundo:" />
+                        <ColorPicker fx:id="corf" prefHeight="25.0" prefWidth="50.0" />
+                        <Button fx:id="fundoB" onAction="#fundo" prefHeight="25.0" prefWidth="125.0" text="Preencher" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="5">
+                    <children>
+                        <Button fx:id="selectB" onAction="#select" prefHeight="25.0" prefWidth="125.0" text="Selecionar" />
+                        <Button fx:id="rotationB" onAction="#rotation" prefHeight="25.0" prefWidth="125.0" text="Rotação" />
+                        <Button fx:id="scaleB" onAction="#scale" prefHeight="25.0" prefWidth="125.0" text="Escala" />
+                        <Button fx:id="vivaLaRevolutionB" mnemonicParsing="false" onAction="#vivaLaRevolution" prefHeight="25.0" prefWidth="126.0" text="Revoluçao" />
+                        <Label prefHeight="25.0" prefWidth="70.0" text="Borda:" />
+                        <ColorPicker fx:id="corb" prefHeight="25.0" prefWidth="50.0" />
+                        <Button fx:id="bordaB" onAction="#borda" prefHeight="25.0" prefWidth="125.0" text="Mudar Borda" />
+                        
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="5" GridPane.rowIndex="2">
+                    <children>
+                        <Button fx:id="freeB" onAction="#free" prefHeight="25.0" prefWidth="125.0" text="Poli. Irreg." />
+                        <Button fx:id="circleB" onAction="#circle" prefHeight="25.0" prefWidth="125.0" text="Circulo" />
+                        <Button fx:id="polygonB" onAction="#polygon" prefHeight="25.0" prefWidth="125.0" text="Poli. Reg." />
+                        <Label prefHeight="25.0" prefWidth="71.0" text="Nº Lados:" />
+                        <ComboBox fx:id="nLados" prefHeight="25.0" prefWidth="50.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                <Integer fx:value="3" />
+                                <Integer fx:value="4" />
+                                <Integer fx:value="5" />
+                                <Integer fx:value="6" />
+                                <Integer fx:value="7" />
+                                <Integer fx:value="8" />
+                                <Integer fx:value="9" />
+                                <Integer fx:value="10" />
+                                <Integer fx:value="11" />
+                                <Integer fx:value="12" />
+                                <Integer fx:value="13" />
+                                <Integer fx:value="14" />
+                                <Integer fx:value="15" />
+                                <Integer fx:value="16" />
+                                <Integer fx:value="17" />
+                                <Integer fx:value="18" />
+                                <Integer fx:value="19" />
+                                <Integer fx:value="20" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <RadioButton fx:id="selFundo" prefHeight="25.0" prefWidth="125.0" selected="false" text="Com Fundo" />
+                        <Button fx:id="freeFundoB" onAction="#freeFundo" prefHeight="25.0" prefWidth="125.0" text="Remover Fundo" />
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+    </bottom>
+    <top>
+        <MenuBar prefHeight="15.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem onAction="#save" text="Salvar" />
+                        <MenuItem onAction="#load" text="Abrir" />
+                        <MenuItem onAction="#novo" text="novo" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonoregular" text="Poligono Regular" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonoirregular" text="Poligono Irregular" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonotranslacao" text="Translação" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonorotacao" text="Rotação" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonoescala" text="Escala" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonocisalhamento" text="Cisalhamento" />
+                  <MenuItem mnemonicParsing="false" onAction="#helppoligonopreenchimento" text="Preenchimento" />
+                    </items>
+                </Menu>
+            </menus>
+       </MenuBar>
+    </top>
+    <center>
+        <GridPane fx:id="gridCanvas" style="-fx-grid-lines-visible: true;">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+                <Canvas fx:id="canvas1" onMouseClicked="#detectaCanvas1" height="280.0" width="630.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+                <Canvas fx:id="canvas2" onMouseClicked="#detectaCanvas2" height="280.0" width="630.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+                <Canvas fx:id="canvas3" onMouseClicked="#detectaCanvas3" height="280.0" width="630.0" GridPane.rowIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+                <Canvas fx:id="canvas4" height="280.0" width="630.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                <Label  fx:id="label1" text="(X, Y)" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="label2" text="(X, Z)" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets right="10.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="label3" text="(Z, Y)" GridPane.rowIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="10.0" bottom="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="label4" text="Perspectiva" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets right="10.0" bottom="10.0" />
+                    </GridPane.margin>
+                </Label>
+            </children>
+         <columnConstraints>
+            <ColumnConstraints fx:id="canvasWidth1" maxWidth="1260.0" minWidth="600.0" prefWidth="630.0" />
+            <ColumnConstraints fx:id="canvasWidth2" maxWidth="1260.0" minWidth="600.0" prefWidth="630.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fx:id="canvasHeight1" maxHeight="560.0" minHeight="250.0" prefHeight="280.0" />
+            <RowConstraints fx:id="canvasHeight2" maxHeight="560.0" minHeight="250.0" prefHeight="280.0" />
+         </rowConstraints>
+        </GridPane>
+    </center>
+</BorderPane>
